@@ -1,0 +1,332 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap");
+
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/gold.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/gold-dark.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/red-dark.css";
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+/* h1, */
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+:root {
+  --font-roboto: "Roboto", sans-serif;
+}
+
+body {
+  font-family: var(--font-roboto);
+  color: var(--gray-12);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--gray-6);
+}
+
+.container {
+  max-width: 640px;
+  margin-inline: auto;
+  position: relative;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 386px;
+  margin-inline: auto;
+}
+
+label {
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 0.375rem;
+}
+
+input,
+select,
+textarea {
+  border: 0;
+  outline: 1px solid var(--gray-7);
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline-width: 2px;
+  outline-color: var(--gold-8);
+  outline-offset: -1px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn {
+  border: 1px solid transparent;
+  background-color: var(--gold-9);
+  color: #fff;
+  padding: 0.375rem 0.75rem;
+}
+
+.btn:hover {
+  background-color: var(--gold-10);
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0.5rem; /* optional spacing between images */
+}
+
+.reserve {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--gray-6);
+  padding: 1rem;
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  margin-top: 0.5rem;
+}
+
+.reserve__price {
+  font-size: 0.875rem;
+}
+
+.reserve__price strong {
+  font-size: 1rem;
+}
+
+.reserve__dates {
+  font-size: 0.75rem;
+  color: var(--gray-11);
+}
+
+.details {
+  padding-block: 1.5rem;
+}
+
+.details__title {
+  margin: 0;
+}
+
+.details__list {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.details__list li:not(:last-child)::after {
+  content: "·";
+  margin: 0 10px;
+}
+
+.amenities {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block: 1.5rem;
+}
+
+.amenities__item {
+  display: flex;
+  gap: 1rem;
+}
+
+.amenities__icon {
+  padding-left: 1rem;
+}
+
+.amenities__title,
+.amenities__description {
+  font-size: 0.875rem;
+}
+
+.amenities__title {
+  margin-top: 0;
+  font-weight: 500;
+}
+
+.amenities__description {
+  color: var(--gray-11);
+}
+
+.description {
+  padding-block: 1.5rem;
+}
+
+.description p:first-of-type {
+  margin-top: 0;
+}
+
+.dates {
+  padding-block: 1.5rem;
+}
+
+.dates__title {
+  margin: 0;
+}
+
+.dates__selected {
+  margin-top: 0.5rem;
+  color: var(--gray-11);
+}
+
+.dates__calendar-container {
+  margin-top: 1.5rem;
+}
+
+.dates__clear-btn {
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.dates__clear-btn:hover {
+  background: var(--gold-4);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 0.5rem 1rem;
+  border-bottom: 1px solid var(--gray-6);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--gold-11);
+}
+
+.navbar__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: var(--font-roboto);
+}
+
+.navbar__buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navbar__btn {
+  border: 0;
+  background: none;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.navbar__btn--login {
+  background-color: var(--gold-9);
+  color: #fff;
+}
+
+.navbar__btn--login:hover {
+  background-color: var(--gold-10);
+}
+
+.navbar__btn--signup:hover {
+  background-color: var(--gold-4);
+}
