@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BubblesIcon,
   DoorOpenIcon,
   LeafIcon,
-  UserIcon,
   WifiIcon,
 } from "lucide-react";
 import MyRangeCalendar from "./components/MyRangeCalendar/MyRangeCalendar";
 import { Button } from "react-aria-components";
 import MyImagesDialog from "./components/MyImagesDialog/MyImagesDialog";
-import MySwiper from "./components/MySwiper/MySwiper";
 
 function App() {
   let [isOpen, setOpen] = React.useState(false);

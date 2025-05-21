@@ -3,15 +3,11 @@ import {
   Button,
   Dialog,
   DialogTrigger,
-  Heading,
-  Input,
-  Label,
   Modal,
-  TextField,
 } from "react-aria-components";
 
 import "./MyImagesDialog.css";
-import { ArrowLeftIcon, ChevronLeftIcon } from "lucide-react";
+import { ChevronLeftIcon } from "lucide-react";
 import MySwiper from "../MySwiper/MySwiper";
 
 interface MyImagesDialogProps {

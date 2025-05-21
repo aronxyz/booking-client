@@ -1,4 +1,4 @@
-import type { DateValue, RangeCalendarProps } from "react-aria-components";
+import type { RangeCalendarProps } from "react-aria-components";
 import {
   Button,
   CalendarCell,
