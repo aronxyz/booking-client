@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   BubblesIcon,
   DoorOpenIcon,
@@ -8,9 +8,11 @@ import {
 } from "lucide-react";
 import MyRangeCalendar from "./components/MyRangeCalendar/MyRangeCalendar";
 import { Button } from "react-aria-components";
+import MyImagesDialog from "./components/MyImagesDialog/MyImagesDialog";
+import MySwiper from "./components/MySwiper/MySwiper";
 
 function App() {
-  const [count, setCount] = useState(0);
+  let [isOpen, setOpen] = React.useState(false);
 
   return (
     <div className="container">
@@ -27,11 +29,26 @@ function App() {
       <h1>Contemporary Comfort</h1>
 
       {/* Image Grid */}
-      <div className="images-grid">
-        <img src="barcelonaedition_oab_00003.jpg" alt="Image 1" />
-        <img src="barcelonaedition_oab_00006.jpg" alt="Image 2" />
-        <img src="barcelonaedition_oab_00007.jpg" alt="Image 3" />
-        {/* <img src="barcelonaedition_oab_00002.jpg" alt="Image 4" /> */}
+      <div className="images-grid" onClick={() => setOpen(true)}>
+        <div className="first img-wrapper">
+          <img src="barcelonaedition_oab_00003.jpg" alt="Image 1" />
+        </div>
+        <div className="second img-wrapper">
+          <img src="barcelonaedition_oab_00006.jpg" alt="Image 2" />
+        </div>
+        <div className="third img-wrapper">
+          <img src="barcelonaedition_oab_00007.jpg" alt="Image 3" />
+        </div>
+        <div className="fourth img-wrapper">
+          <img src="barcelonaedition_oab_00002.jpg" alt="Image 4" />
+        </div>
+      </div>
+
+      <div className="images-grid-mobile">
+        <div onClick={() => setOpen(true)} className="first img-wrapper">
+          <img src="barcelonaedition_oab_00003.jpg" alt="Image 1" />
+        </div>
+        <div className="images-grid-mobile__count">1/4</div>
       </div>
 
       <div className="details">
@@ -126,6 +143,7 @@ function App() {
         </div>
         <button className="btn primary-btn">Reserve</button>
       </div>
+      <MyImagesDialog isOpen={isOpen} setOpen={setOpen} />
     </div>
   );
 }
