@@ -4,13 +4,30 @@ import {
   DoorOpenIcon,
   LeafIcon,
   WifiIcon,
+  XIcon,
 } from "lucide-react";
 import MyRangeCalendar from "./components/MyRangeCalendar/MyRangeCalendar";
-import { Button } from "react-aria-components";
+import { Button, Dialog, DialogTrigger, Modal } from "react-aria-components";
 import MyImagesDialog from "./components/MyImagesDialog/MyImagesDialog";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+const images = [
+  { src: "barcelonaedition_oab_00003.jpg", alt: "Image 1" },
+  { src: "barcelonaedition_oab_00005.jpg", alt: "Image 2" },
+  { src: "barcelonaedition_oab_00006.jpg", alt: "Image 3" },
+  { src: "barcelonaedition_oab_00007.jpg", alt: "Image 4" },
+  { src: "barcelonaedition_oab_00002.jpg", alt: "Image 5" },
+];
 
 function App() {
-  let [isOpen, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = React.useState(false);
+  const [initialSlide, setInitialSlide] = React.useState(0);
+
+  const handleImageClick = (index: number) => {
+    setInitialSlide(index);
+    setOpen(true);
+  };
 
   return (
     <div className="container">
@@ -26,35 +43,32 @@ function App() {
       </div>
       <h1>Contemporary Comfort</h1>
 
-      {/* Image Grid */}
-      <div className="images-grid" onClick={() => setOpen(true)}>
-        <div className="first img-wrapper">
-          <img src="barcelonaedition_oab_00003.jpg" alt="Image 1" />
-        </div>
-        <div className="second img-wrapper">
-          <img src="barcelonaedition_oab_00006.jpg" alt="Image 2" />
-        </div>
-        <div className="third img-wrapper">
-          <img src="barcelonaedition_oab_00007.jpg" alt="Image 3" />
-        </div>
-        <div className="fourth img-wrapper">
-          <img src="barcelonaedition_oab_00002.jpg" alt="Image 4" />
-        </div>
+      {/* Gallery */}
+      <div className="gallery">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="gallery__item"
+            onClick={() => handleImageClick(index)}
+          >
+            <img className="gallery__img" src={image.src} alt={image.alt} />
+          </div>
+        ))}
       </div>
 
-      <div className="images-grid-mobile">
-        <div onClick={() => setOpen(true)} className="first img-wrapper">
+      <div className="gallery-mobile">
+        <div onClick={() => handleImageClick(0)} className="gallery__item">
           <img src="barcelonaedition_oab_00003.jpg" alt="Image 1" />
         </div>
-        <div className="images-grid-mobile__count">1/4</div>
+        <div className="gallery-mobile__pagination">1/4</div>
       </div>
 
+      {/* Details */}
       <div className="details">
         <h2 className="details__title">
           Modern & Elegant Home in the Heart of Copenhagen
         </h2>
 
-        {/* Listing Details */}
         <ol className="details__list">
           <li>4 guests</li>
           <li>2 bedrooms</li>
@@ -124,6 +138,7 @@ function App() {
 
       <hr />
 
+      {/* Dates */}
       <div className="dates">
         <MyRangeCalendar
           aria-label="Trip dates"
@@ -131,7 +146,7 @@ function App() {
         />
       </div>
 
-      {/* Price and Reserve Button */}
+      {/* Reserve */}
       <div className="reserve">
         <div>
           <div className="reserve__price">
@@ -141,7 +156,36 @@ function App() {
         </div>
         <button className="btn primary-btn">Reserve</button>
       </div>
-      <MyImagesDialog isOpen={isOpen} setOpen={setOpen} />
+
+      <DialogTrigger>
+        <Modal isOpen={isOpen} onOpenChange={setOpen}>
+          <Dialog className="gallery-dialog">
+            <Button
+              className="gallery-dialog__close-btn"
+              onPress={() => setOpen(false)}
+            >
+              <XIcon />
+            </Button>
+            <div className="gallery-dialog__swipper-wrapper">
+              <Swiper
+                pagination={{
+                  type: "fraction",
+                }}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper"
+                initialSlide={initialSlide}
+              >
+                {images.map((img, idx) => (
+                  <SwiperSlide key={idx}>
+                    <img src={img.src} alt={img.alt} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </Dialog>
+        </Modal>
+      </DialogTrigger>
     </div>
   );
 }

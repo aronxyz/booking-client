@@ -15,7 +15,6 @@ export default function MySwiper() {
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
-        centeredSlides={true}
       >
         <SwiperSlide>
           <img src="barcelonaedition_oab_00003.jpg" alt="Image 1" />

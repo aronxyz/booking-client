@@ -54,15 +54,20 @@
   }
 }
 
-.react-aria-Dialog {
+.gallery-dialog {
   height: 100%;
   background: #000;
 }
 
-.test {
-  height: 100%;
-  display: flex;
-  align-items: center;
+.gallery-dialog__close-btn {
+  border: 0;
+  background: none;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.gallery-dialog__swipper-wrapper {
+  height: 100%; 
 }
 
 .swiper {
